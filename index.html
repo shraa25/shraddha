@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -16,15 +16,23 @@
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="hamburger"><i class="fas fa-bars"></i></div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+        <i class="fas fa-sun" id="themeIcon"></i>
+      </button>
+      <div class="hamburger"><i class="fas fa-bars"></i></div>
+    </div>
   </nav>
 
   <!-- Hero -->
   <section id="home" class="hero">
+    <canvas id="particles"></canvas>
     <div class="hero-content">
       <p class="greeting">Hi there 👋, I'm</p>
       <h1>Shraddha More</h1>
@@ -37,7 +45,10 @@
     </div>
     <div class="hero-visual">
       <div class="avatar-ring">
-        <div class="avatar">SM</div>
+        <div class="avatar">
+          <img src="photo.jpg" alt="Shraddha More" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+          <span class="avatar-fallback">SM</span>
+        </div>
       </div>
     </div>
   </section>
@@ -46,22 +57,22 @@
   <section id="about" class="section about">
     <h2 class="section-title">About <span>Me</span></h2>
     <div class="about-grid">
-      <div class="about-card">
+      <div class="about-card glass">
         <i class="fas fa-graduation-cap"></i>
         <h3>Education</h3>
         <p>Graduated in Computer Science</p>
       </div>
-      <div class="about-card">
+      <div class="about-card glass">
         <i class="fas fa-code"></i>
         <h3>Developer</h3>
         <p>Aspiring Python Developer with hands-on experience in Flask & Django</p>
       </div>
-      <div class="about-card">
+      <div class="about-card glass">
         <i class="fas fa-brain"></i>
         <h3>ML Enthusiast</h3>
         <p>Machine Learning enthusiast working with TensorFlow & scikit-learn</p>
       </div>
-      <div class="about-card">
+      <div class="about-card glass">
         <i class="fab fa-aws"></i>
         <h3>Cloud</h3>
         <p>Experience with AWS cloud services and deployment</p>
@@ -69,14 +80,145 @@
     </div>
   </section>
 
+  <!-- Experience -->
+  <section id="experience" class="section experience">
+    <h2 class="section-title">Experience & <span>Internships</span></h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <div class="timeline-header">
+            <div>
+              <h3>Python Developer Intern</h3>
+              <p class="company"><i class="fas fa-building"></i> Tech Company</p>
+            </div>
+            <span class="timeline-date">2024</span>
+          </div>
+          <p>Developed and maintained Python-based applications, worked with Flask for backend services, and contributed to ML model integrations.</p>
+          <div class="timeline-tags">
+            <span>Python</span><span>Flask</span><span>MySQL</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <div class="timeline-header">
+            <div>
+              <h3>Machine Learning Intern</h3>
+              <p class="company"><i class="fas fa-building"></i> AI Startup</p>
+            </div>
+            <span class="timeline-date">2023</span>
+          </div>
+          <p>Built and trained classification models using scikit-learn and TensorFlow. Performed data preprocessing, EDA, and model evaluation.</p>
+          <div class="timeline-tags">
+            <span>Python</span><span>TensorFlow</span><span>Pandas</span><span>NumPy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="section education">
+    <h2 class="section-title">My <span>Education</span></h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <div class="timeline-header">
+            <div>
+              <h3>Bachelor of Engineering</h3>
+              <p class="company"><i class="fas fa-university"></i> Computer Science & Engineering</p>
+            </div>
+            <span class="timeline-date">2021 – 2025</span>
+          </div>
+          <p>Studied core computer science subjects including Data Structures, Algorithms, Machine Learning, Database Management, and Web Development.</p>
+          <div class="timeline-tags">
+            <span>Computer Science</span><span>Machine Learning</span><span>Web Dev</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <div class="timeline-header">
+            <div>
+              <h3>Higher Secondary (12th)</h3>
+              <p class="company"><i class="fas fa-school"></i> Science Stream</p>
+            </div>
+            <span class="timeline-date">2021</span>
+          </div>
+          <p>Completed HSC with Science stream, focusing on Mathematics, Physics, and Computer Science fundamentals.</p>
+          <div class="timeline-tags">
+            <span>Science</span><span>Mathematics</span><span>Computer Science</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Skills -->
   <section id="skills" class="section skills">
     <h2 class="section-title">Tech <span>Stack</span></h2>
-    <div class="skills-grid">
+    <div class="skills-container">
+      <div class="skill-category">
+        <h3>Languages & Frameworks</h3>
+        <div class="skill-bars">
+          <div class="skill-bar-item">
+            <div class="skill-bar-header"><span><i class="fab fa-python"></i> Python</span><span class="pct">90%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-header"><span>🌐 Flask</span><span class="pct">80%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-header"><span>🎯 Django</span><span class="pct">75%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Machine Learning</h3>
+        <div class="skill-bars">
+          <div class="skill-bar-item">
+            <div class="skill-bar-header"><span>🤖 TensorFlow</span><span class="pct">75%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-header"><span>📊 scikit-learn</span><span class="pct">82%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-header"><span>🐼 Pandas / NumPy</span><span class="pct">85%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Tools & Cloud</h3>
+        <div class="skill-bars">
+          <div class="skill-bar-item">
+            <div class="skill-bar-header"><span><i class="fab fa-aws"></i> AWS</span><span class="pct">70%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-header"><span><i class="fas fa-database"></i> MySQL</span><span class="pct">80%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-header"><span><i class="fab fa-github"></i> Git / GitHub</span><span class="pct">85%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="skills-pills">
       <div class="skill-item"><i class="fab fa-python"></i><span>Python</span></div>
       <div class="skill-item"><i class="fab fa-aws"></i><span>AWS</span></div>
       <div class="skill-item"><i class="fas fa-flask"></i><span>Flask</span></div>
-      <div class="skill-item"><i class="fab fa-django" style="font-family:monospace;font-style:normal;">Dj</i><span>Django</span></div>
+      <div class="skill-item"><span style="font-weight:700;color:var(--accent2)">Dj</span><span>Django</span></div>
       <div class="skill-item"><i class="fas fa-database"></i><span>MySQL</span></div>
       <div class="skill-item"><i class="fas fa-robot"></i><span>TensorFlow</span></div>
       <div class="skill-item"><i class="fas fa-chart-line"></i><span>scikit-learn</span></div>
@@ -86,7 +228,7 @@
       <div class="skill-item"><i class="fab fa-github"></i><span>GitHub</span></div>
       <div class="skill-item"><i class="fas fa-code-branch"></i><span>Git</span></div>
       <div class="skill-item"><i class="fas fa-vial"></i><span>Selenium</span></div>
-      <div class="skill-item"><i class="fab fa-apache" style="font-family:monospace;font-style:normal;">Ap</i><span>Apache</span></div>
+      <div class="skill-item"><span style="font-weight:700;color:var(--accent2)">Ap</span><span>Apache</span></div>
     </div>
   </section>
 
@@ -94,30 +236,44 @@
   <section id="projects" class="section projects">
     <h2 class="section-title">My <span>Projects</span></h2>
     <div class="projects-grid">
-      <div class="project-card">
+
+      <div class="project-card glass">
+        <div class="project-icon"><i class="fas fa-users-cog"></i></div>
+        <h3>Student Management System</h3>
+        <p>A Flask-based system with login, signup, CRUD operations, search, dashboard analytics, flash messages, and SQLite database. Deployed live on Render.</p>
+        <div class="project-tags">
+          <span>Flask</span><span>SQLite</span><span>Bootstrap</span><span>Chart.js</span><span>Render</span>
+        </div>
+        <div class="project-links">
+          <a href="https://student-management-system-4-55ii.onrender.com" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          <a href="https://github.com/shraa25/student-management-system" target="_blank" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> Code</a>
+        </div>
+      </div>
+
+      <div class="project-card glass">
         <div class="project-icon"><i class="fas fa-robot"></i></div>
         <h3>ML Classification Model</h3>
-        <p>Built a machine learning model using scikit-learn and TensorFlow for real-world data classification.</p>
+        <p>Built a machine learning model using scikit-learn and TensorFlow for real-world data classification with high accuracy.</p>
         <div class="project-tags">
           <span>Python</span><span>TensorFlow</span><span>scikit-learn</span>
         </div>
-      </div>
-      <div class="project-card">
-        <div class="project-icon"><i class="fas fa-globe"></i></div>
-        <h3>Flask Web Application</h3>
-        <p>Developed a full-stack web app with Flask backend, MySQL database, and deployed on AWS.</p>
-        <div class="project-tags">
-          <span>Flask</span><span>MySQL</span><span>AWS</span>
+        <div class="project-links">
+          <a href="https://github.com/shraa25" target="_blank" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> Code</a>
         </div>
       </div>
-      <div class="project-card">
+
+      <div class="project-card glass">
         <div class="project-icon"><i class="fas fa-spider"></i></div>
         <h3>Web Scraper</h3>
-        <p>Automated data extraction tool using Selenium and Python for structured data collection.</p>
+        <p>Automated data extraction tool using Selenium and Python for structured data collection and analysis.</p>
         <div class="project-tags">
           <span>Python</span><span>Selenium</span><span>Pandas</span>
         </div>
+        <div class="project-links">
+          <a href="https://github.com/shraa25" target="_blank" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> Code</a>
+        </div>
       </div>
+
     </div>
     <div class="github-link">
       <a href="https://github.com/shraa25" target="_blank" class="btn btn-primary">
@@ -141,11 +297,11 @@
     <h2 class="section-title">Get In <span>Touch</span></h2>
     <p class="contact-desc">I'm currently open to new opportunities. Feel free to reach out!</p>
     <div class="contact-links">
-      <a href="mailto:shraddhamore2528@gmail.com" class="contact-card">
+      <a href="mailto:shraddhamore2528@gmail.com" class="contact-card glass">
         <i class="fas fa-envelope"></i>
         <span>shraddhamore2528@gmail.com</span>
       </a>
-      <a href="https://github.com/shraa25" target="_blank" class="contact-card">
+      <a href="https://github.com/shraa25" target="_blank" class="contact-card glass">
         <i class="fab fa-github"></i>
         <span>github.com/shraa25</span>
       </a>
@@ -156,6 +312,9 @@
   <footer>
     <p>Designed & Built by <span>Shraddha More</span> · 2025</p>
   </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <script src="script.js"></script>
 </body>
